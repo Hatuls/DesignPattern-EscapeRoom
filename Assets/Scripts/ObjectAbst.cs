@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Object", menuName = "Object/Generic")]
 public class ObjectAbst : ScriptableObject
 {
-
-    public string Name;
+    internal GameObject gameObject;
+    public string name;
     public bool isSelectAble;
     public bool canInteract;
     public bool isPickUp;
     public string emptySentence;
     public void ToPickUp()
     {
-        // add to inventory
+
 
         if (!isPickUp)
             return;
-
-
-        Inventory._instance.AddToInventory(this);
+    Inventory._instance.AddToInventory(this);
+        
     }
 
 
-    public virtual void WorldInteraction(ObjectAbst objectAabst)
+    public virtual void WorldInteraction(ObjectAbst objectAbst)
     {
         if (!canInteract)
         {
@@ -29,7 +29,7 @@ public class ObjectAbst : ScriptableObject
         }
             
 
-        if (objectAabst == null)
+        if (objectAbst == null)
         {
             //noraml interaction
             Debug.Log(emptySentence);
@@ -54,7 +54,16 @@ public class ObjectNote : ObjectAbst
 {
     [SerializeField] string ReadContent;
 
-    public override void UseObject() { Debug.Log(ReadContent); }
+
+    // this function is used only when pressed a button 1-9 from inventory
+    public override void UseObject() {
+        //gameObject.SetActive(false);
+        Debug.Log(ReadContent);
+        gameObject.GetComponentInChildren<TextMesh>().text = ReadContent;
+        
+    }
+  
+
 }
 public class ElectricitySwitch : ObjectAbst
 {

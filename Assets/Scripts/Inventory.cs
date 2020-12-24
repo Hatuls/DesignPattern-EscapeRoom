@@ -24,9 +24,7 @@ public class Inventory : MonoBehaviour
 
     public void AddToInventory(ObjectAbst item)
     {
-        if (item == null)
-            return;
-
+ 
 
         for (int i = 0; i < inventory.Length; i++)
         {
@@ -59,11 +57,27 @@ public class Inventory : MonoBehaviour
 
     public void CheckIfObjectIsSelectable(int x)
     {
-
-        if (inventory[x].isSelectAble)
+        if (inventory[x] != null)
         {
             inventory[x].UseObject();
+
+
+            if (inventory[x].isSelectAble)
+            {
+                InputManager._instance.SetUseObject(inventory[x]);
+                Debug.Log("Now Holding a " + inventory[x].name + " Object");
+            }
         }
+        else
+        {
+            Debug.Log("Now My Hands Are Free!");
+        }
+
+    }
+
+    public void GetObjectFromInventory(int x) {
+        InputManager._instance.SetUseObject(inventory[x]);
+
 
     }
 }
