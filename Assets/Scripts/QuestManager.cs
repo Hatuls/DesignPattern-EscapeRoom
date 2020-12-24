@@ -1,18 +1,24 @@
-﻿using System.Collections;
+﻿using Assets.Quests;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    List<QuestAbstSO> unfinishedQuests = new List<QuestAbstSO>();
+    List<QuestAbstSO> finishedQuests = new List<QuestAbstSO>();
+
+    public void FinishQuest(ObjectAbst object1, ObjectAbst object2) {
+
+    }
+    public void FinishQuest(ObjectAbst object1) {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void unfinishQuest(ObjectAbst object1, ObjectAbst object2) {
+
     }
+    public void unfinishQuest(ObjectAbst object1) {
+
+    }
+
 }
