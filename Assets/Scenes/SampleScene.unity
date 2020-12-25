@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b9d14a0f8d95143b7ce75dbbc08775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisObject: {fileID: 11400000, guid: 5f4f0939133b73e43aa7e31af18643fa, type: 2}
+  thisObject: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,12 +2177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1519442465}
-  - component: {fileID: 1519442464}
-  - component: {fileID: 1519442463}
   - component: {fileID: 1519442462}
-  - component: {fileID: 1519442466}
   m_Layer: 0
-  m_Name: QuestHandler
+  m_Name: QuestManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2197,43 +2194,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1519442461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f6a1500b032b0408b5e604ca4f27b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 525528234f1153144aa85e5032105d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 61151bcd529ef7c45873fbe9ff08f3e3, type: 2}
-  objectsToSwap: []
---- !u!114 &1519442463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519442461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f6a1500b032b0408b5e604ca4f27b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 344824bbe407e664d97108447854f959, type: 2}
-  objectsToSwap:
-  - {fileID: 374272606}
-  - {fileID: 2127712010}
---- !u!114 &1519442464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519442461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f6a1500b032b0408b5e604ca4f27b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 4885be42ba1c4e445a3271000ce79a33, type: 2}
-  objectsToSwap:
-  - {fileID: 767569679}
-  - {fileID: 1127607341}
+  quests:
+  - quest: {fileID: 11400000, guid: 4885be42ba1c4e445a3271000ce79a33, type: 2}
+    objectsToSwap:
+    - {fileID: 767569679}
+    - {fileID: 1127607341}
+  - quest: {fileID: 11400000, guid: 61151bcd529ef7c45873fbe9ff08f3e3, type: 2}
+    objectsToSwap: []
+  - quest: {fileID: 11400000, guid: 344824bbe407e664d97108447854f959, type: 2}
+    objectsToSwap:
+    - {fileID: 374272606}
+    - {fileID: 2127712010}
+  - quest: {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
+    objectsToSwap:
+    - {fileID: 760476902}
+    - {fileID: 129485550}
 --- !u!4 &1519442465
 Transform:
   m_ObjectHideFlags: 0
@@ -2248,22 +2226,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1519442466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519442461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f6a1500b032b0408b5e604ca4f27b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
-  objectsToSwap:
-  - {fileID: 760476902}
-  - {fileID: 129485550}
 --- !u!1 &1775637691
 GameObject:
   m_ObjectHideFlags: 0
