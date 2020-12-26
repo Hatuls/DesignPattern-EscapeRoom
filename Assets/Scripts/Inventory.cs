@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
             if (inventory[i] == null)
             {
                 inventory[i] = item;
-
+                Debug.Log(item.name + " Was added to slot number " + i);
                 break;
             }
         }

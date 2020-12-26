@@ -17,6 +17,7 @@ public class ObjectAbst : ScriptableObject
 
         if (!isPickUp)
             return;
+        gameObject.SetActive(!gameObject.activeSelf);
     Inventory._instance.AddToInventory(this);
         
     }
@@ -38,9 +39,9 @@ public class ObjectAbst : ScriptableObject
         }
         else
         {
-            //unlockQuest
+          
            
-            // QuestManager._instance.CheckInteraction(this , objectAabst);
+             QuestManager._instance.ChangeQuestState(this , objectAbst , true);
         }
 
 
@@ -57,13 +58,6 @@ public class ObjectNote : ObjectAbst
 
 
     // this function is used only when pressed a button 1-9 from inventory
-    public override void WorldInteraction(ObjectAbst objectAbst) {
-        gameObject.SetActive(false);
-        ToPickUp();
-        Debug.Log(ReadContent);
-        
-    }
-
     public override void UseObject()
     {
         QuestManager._instance.ChangeQuestState(this, true);
