@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager _instance;
+
     [SerializeField]
     QuestHandler[] quests;
     List<QuestAbstSO> unfinishedQuests = new List<QuestAbstSO>();
@@ -12,18 +14,19 @@ public class QuestManager : MonoBehaviour
         foreach (QuestHandler questHandler in quests) {
             questHandler.quest.handlingScript = questHandler;
         }
+        _instance = this;
     }
 
-    public void SwapQuestState(ObjectAbst object1, ObjectAbst object2) {
+    public void ChangeQuestState(ObjectAbst object1, ObjectAbst object2, bool questState) {
         foreach(QuestAbstSO quest in unfinishedQuests) {
             if (quest.Check(object1,object2)) {
-                quest.SwapQuestState();
+                quest.ChangeQuestState(questState);
                 break;
             }
         }
     }
-    public void SwapQuestState(ObjectAbst object1) {
-        SwapQuestState(object1, null);
+    public void ChangeQuestState(ObjectAbst object1, bool state) {
+        ChangeQuestState(object1, null , state);
     }
 }
 

@@ -36,9 +36,13 @@ public class QuestAbstSO : ScriptableObject
             Debug.Log(unfinishedQuestMessage);
         }
     }
-    public void SwapQuestState() {
-        isCompleted = !isCompleted;
-        handlingScript.SwapObjects();
+    public void ChangeQuestState(bool state)
+    {
+        if (state != isCompleted)
+        {
+            isCompleted = state;
+            handlingScript.SwapObjects();
+        }
     }
     public bool Check(ObjectAbst object1, ObjectAbst object2) {
         if ((object1 == object1ToComplete && object2 == object2ToComplete)

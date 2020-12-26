@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Timeline;
+using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Object", menuName = "Object/Generic")]
@@ -6,9 +7,9 @@ public class ObjectAbst : ScriptableObject
 {
     internal GameObject gameObject;
     public string name;
-    public bool isSelectAble;
-    public bool canInteract;
-    public bool isPickUp;
+    public bool isSelectAble; // can i select it when its in my inventory
+    public bool canInteract; // can i use it on scene
+    public bool isPickUp; // pick it up
     public string emptySentence;
     public void ToPickUp()
     {
@@ -56,32 +57,34 @@ public class ObjectNote : ObjectAbst
 
 
     // this function is used only when pressed a button 1-9 from inventory
-    public override void UseObject() {
-        //gameObject.SetActive(false);
+    public override void WorldInteraction(ObjectAbst objectAbst) {
+        gameObject.SetActive(false);
+        ToPickUp();
         Debug.Log(ReadContent);
-        gameObject.GetComponentInChildren<TextMesh>().text = ReadContent;
         
     }
-  
+
+    public override void UseObject()
+    {
+        QuestManager._instance.ChangeQuestState(this, true);
+    }
+
+
 
 }
+
+
+[CreateAssetMenu(fileName = "Object Note", menuName = "Object/ElectricitySwitch")]
 public class ElectricitySwitch : ObjectAbst
 {
     [SerializeField] string ReadContent = "You Turned The Light To";
    public bool isLightOn = false;
+   
     public bool GetSetLightSwitchState {
         get { return isLightOn; }
         set {
             isLightOn = value;
-
-            if (!isLightOn)
-            {
-                // QuestManager._instance.UnFinishQuest(this)
-            }
-            else
-            {
-                // QuestManager._instance.FinishQuest(this)
-            }
+            QuestManager._instance.ChangeQuestState(this, isLightOn);
 
         }
     
