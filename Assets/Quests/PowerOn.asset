@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: PowerOn
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
-  handlingScript: {fileID: 0}
+  handlingScript:
+    quest: {fileID: 0}
+    objectsToSwap: []
   object1ToComplete: {fileID: 0}
   object2ToComplete: {fileID: 0}
   questsNeeded: []
-  finishedQuestMessage: Power on!
-  unfinishedQuestMessage: Power off!
+  finishedQuestMessage: Turned light on!
+  unfinishedQuestMessage: Turned light off!
