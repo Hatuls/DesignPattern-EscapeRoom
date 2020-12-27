@@ -319,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168927432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 13.46}
+  m_LocalPosition: {x: 0, y: 0, z: 9.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 374272607}
@@ -364,7 +364,6 @@ GameObject:
   - component: {fileID: 268489081}
   - component: {fileID: 268489084}
   - component: {fileID: 268489083}
-  - component: {fileID: 268489082}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -386,19 +385,6 @@ Transform:
   m_Father: {fileID: 2127712011}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &268489082
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268489080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &268489083
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -648,7 +634,6 @@ GameObject:
   - component: {fileID: 371087157}
   - component: {fileID: 371087160}
   - component: {fileID: 371087159}
-  - component: {fileID: 371087158}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -670,19 +655,6 @@ Transform:
   m_Father: {fileID: 374272607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &371087158
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371087156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &371087159
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -741,7 +713,6 @@ GameObject:
   - component: {fileID: 374272607}
   - component: {fileID: 374272610}
   - component: {fileID: 374272609}
-  - component: {fileID: 374272608}
   m_Layer: 0
   m_Name: FrameClosed
   m_TagString: Untagged
@@ -764,19 +735,6 @@ Transform:
   m_Father: {fileID: 168927433}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &374272608
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 374272606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &374272609
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1589,7 +1547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.13, y: 1, z: 1.03}
+  m_LocalPosition: {x: 13.44, y: 1, z: 1.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2104,16 +2062,20 @@ MonoBehaviour:
     objectsToSwap:
     - {fileID: 767569679}
     - {fileID: 1127607341}
+    isCompleted: 0
   - quest: {fileID: 11400000, guid: 61151bcd529ef7c45873fbe9ff08f3e3, type: 2}
     objectsToSwap: []
+    isCompleted: 0
   - quest: {fileID: 11400000, guid: 344824bbe407e664d97108447854f959, type: 2}
     objectsToSwap:
     - {fileID: 374272606}
     - {fileID: 2127712010}
+    isCompleted: 0
   - quest: {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
     objectsToSwap:
     - {fileID: 760476902}
     - {fileID: 129485550}
+    isCompleted: 0
 --- !u!4 &1519442465
 Transform:
   m_ObjectHideFlags: 0
@@ -2325,7 +2287,6 @@ GameObject:
   - component: {fileID: 2127712011}
   - component: {fileID: 2127712014}
   - component: {fileID: 2127712013}
-  - component: {fileID: 2127712012}
   m_Layer: 0
   m_Name: FrameOpen
   m_TagString: Untagged
@@ -2348,19 +2309,6 @@ Transform:
   m_Father: {fileID: 168927433}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &2127712012
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127712010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2127712013
 MeshRenderer:
   m_ObjectHideFlags: 0

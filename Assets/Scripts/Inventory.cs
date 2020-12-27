@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
             if (inventory[i] == null)
             {
                 inventory[i] = item;
-                Debug.Log(item.name + " Was added to slot number " + i);
+                Debug.Log(item.objName + " Was added to slot number " + i);
                 break;
             }
         }
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < inventory.Length; i++)
         {
 
-            if (inventory[i].name == item.name)
+            if (inventory[i].objName == item.objName)
             {
                 inventory[i] = null;
 
@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
             if (inventory[x].isSelectAble)
             {
                 InputManager._instance.SetUseObject(inventory[x]);
-                Debug.Log("Now Holding a " + inventory[x].name + " Object");
+                Debug.Log("Now Holding a " + inventory[x].objName + " Object");
             }
         }
         else

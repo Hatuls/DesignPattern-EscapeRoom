@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: UnlockKeypad
+  m_Name: ReadNote
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
   handlingScript:
-    quest: {fileID: 0}
+    quest: {fileID: 11400000}
     objectsToSwap: []
-  object1ToComplete: {fileID: 0}
+    isCompleted: 1
+  object1ToComplete: {fileID: 11400000, guid: 5f4f0939133b73e43aa7e31af18643fa, type: 2}
   object2ToComplete: {fileID: 0}
-  questsNeeded:
-  - {fileID: 11400000, guid: 4885be42ba1c4e445a3271000ce79a33, type: 2}
-  - {fileID: 11400000, guid: 61151bcd529ef7c45873fbe9ff08f3e3, type: 2}
-  finishedQuestMessage: Unlocked Keypad!
-  unfinishedQuestMessage: Locked Keypad!
+  questsNeeded: []
+  finishedQuestMessage: You read a note with the password!
+  unfinishedQuestMessage: 

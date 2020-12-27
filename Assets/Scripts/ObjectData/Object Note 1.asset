@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Object Note 1
   m_EditorClassIdentifier: Assembly-CSharp::ObjectNote
-  name: Note
+  objName: 
   isSelectAble: 0
   canInteract: 1
   isPickUp: 1
-  emptySentence: Rei Segev
-  ReadContent: Picked Up Note
+  emptySentence: 

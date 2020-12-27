@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: UnlockDoor
+  m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
+  handlingScript:
+    quest: {fileID: 11400000}
+    objectsToSwap:
+    - {fileID: 0}
+    - {fileID: 0}
+  object1ToComplete: {fileID: 11400000, guid: ac2c00584bd45d441aad752422efe9be, type: 2}
+  object2ToComplete: {fileID: 11400000, guid: 2e2a6f7f04eff3746af6477cb74b5460, type: 2}
+  questsNeeded:
+  - {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
+  finishedQuestMessage: You unlocked the door!!!!
+  unfinishedQuestMessage: 

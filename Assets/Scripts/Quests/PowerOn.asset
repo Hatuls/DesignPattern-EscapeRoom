@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: UnlockDoor
+  m_Name: PowerOn
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
   handlingScript:
-    quest: {fileID: 0}
-    objectsToSwap: []
-  object1ToComplete: {fileID: 0}
+    quest: {fileID: 11400000}
+    objectsToSwap:
+    - {fileID: 0}
+    - {fileID: 0}
+    isCompleted: 1
+  object1ToComplete: {fileID: 11400000, guid: 6bc42899f5f26ca44a280039f1b99a0d, type: 2}
   object2ToComplete: {fileID: 0}
-  questsNeeded:
-  - {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
-  finishedQuestMessage: You unlocked the door!!!!
-  unfinishedQuestMessage: 
+  questsNeeded: []
+  finishedQuestMessage: Turned light on!
+  unfinishedQuestMessage: Turned light off!

@@ -10,46 +10,21 @@ public class QuestAbstSO : ScriptableObject
     public QuestAbstSO[] questsNeeded;
     public string finishedQuestMessage;
     public string unfinishedQuestMessage;
-    bool isCompleted;
-    public bool GetSetIsCompleted {
-        get => isCompleted;
-        set {
-            switch (value) {
-                case true:
-                    Finish();
-                    isCompleted = true;
-                    break;
-                case false:
-                    Unfinish();
-                    isCompleted = false;
-                    break;
-            }
-        }
-    }
-    public virtual void Finish() {
-        if (finishedQuestMessage != null) {
+
+    public void Finish() {
+        if (finishedQuestMessage != null && finishedQuestMessage != "")
             Debug.Log(finishedQuestMessage);
-        }
     }
-    public virtual void Unfinish() {
-        if (unfinishedQuestMessage != null) {
+    public void Unfinish() {
+        if (unfinishedQuestMessage != null && unfinishedQuestMessage != "")
             Debug.Log(unfinishedQuestMessage);
-        }
-    }
-    public void ChangeQuestState(bool state)
-    {
-        if (state != isCompleted)
-        {
-            isCompleted = state;
-            handlingScript.SwapObjects();
-        }
     }
     public bool Check(ObjectAbst object1, ObjectAbst object2) {
         if ((object1 == object1ToComplete && object2 == object2ToComplete)
             || (object1 == object2ToComplete && object2 == object1ToComplete)) {
             bool finishedAllQuests = true;
             foreach (QuestAbstSO quest in questsNeeded) {
-                finishedAllQuests &= quest.GetSetIsCompleted;
+                finishedAllQuests &= quest.handlingScript.GetSetIsCompleted;
             }
             if (finishedAllQuests) {
                 return true;
