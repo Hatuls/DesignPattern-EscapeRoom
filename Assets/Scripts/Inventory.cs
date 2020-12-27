@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory _instance;
 
-    ObjectAbst[] inventory = new ObjectAbst[10];
+    ObjectAbst[] inventory = new ObjectAbst[9];
 
 
     public ObjectAbst[] GetInventory { get { return inventory; } }
@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
             if (inventory[i] == null)
             {
                 inventory[i] = item;
-                Debug.Log(item.objName + " Was added to slot number " + i);
+                Debug.Log(item.objName + " Was added to slot number " + (i+1) + ".");
                 break;
             }
         }
@@ -65,12 +65,12 @@ public class Inventory : MonoBehaviour
             if (inventory[x].isSelectAble)
             {
                 InputManager._instance.SetUseObject(inventory[x]);
-                Debug.Log("Now Holding a " + inventory[x].objName + " Object");
+                Debug.Log("Now Holding a " + inventory[x].objName + " Object.");
             }
         }
         else
         {
-            Debug.Log("Now My Hands Are Free!");
+            Debug.Log("Now holding nothing.");
         }
 
     }

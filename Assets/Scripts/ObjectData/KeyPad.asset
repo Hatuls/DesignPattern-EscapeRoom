@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd27ac9446315048ad2fcf74a54aaf6, type: 3}
   m_Name: KeyPad
   m_EditorClassIdentifier: 
-  name: KeyPad
+  objName: Keypad
   isSelectAble: 0
   canInteract: 1
   isPickUp: 0

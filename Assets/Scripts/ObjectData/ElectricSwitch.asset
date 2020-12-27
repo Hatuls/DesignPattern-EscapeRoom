@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: ElectricSwitch
   m_EditorClassIdentifier: Assembly-CSharp::ElectricitySwitch
-  name: ElectricSwitch
+  objName: Switch
   isSelectAble: 1
   canInteract: 1
   isPickUp: 0
   emptySentence: 
-  ReadContent: You Turned The Light To
-  isLightOn: 0

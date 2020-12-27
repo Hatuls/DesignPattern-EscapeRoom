@@ -8,7 +8,6 @@ public class ObjectAbst : ScriptableObject
     public bool isSelectAble; // can i select it when its in my inventory
     public bool canInteract; // can i use it on scene
     public bool isPickUp; // pick it up
-    public string emptySentence;
     public void ToPickUp() {
         gameObject.SetActive(!gameObject.activeSelf);
         Inventory._instance.AddToInventory(this);
@@ -24,8 +23,6 @@ public class ObjectAbst : ScriptableObject
 
         if (objectAbst == null && isPickUp) {
             //noraml interaction
-            if (emptySentence != null && emptySentence != "")
-                Debug.Log(emptySentence);
             ToPickUp();
             return;
         }

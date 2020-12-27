@@ -31,15 +31,16 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(useObject);
             _ray = myCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out _hitInfo, 100f))
             {
-                Debug.Log(_hitInfo.collider.gameObject.name);
 
+                Debug.Log("Clicked on " + _hitInfo.collider.gameObject.name + " while holding " + (useObject == null ? "nothing." : useObject.name));
                 _hitInfo.collider.gameObject.GetComponent<ObjectInScene>().GotClicked(useObject);
 
+                
             }
+            
 
         }
 
@@ -62,7 +63,5 @@ public class InputManager : MonoBehaviour
             Inventory._instance.CheckIfObjectIsSelectable(7);
         if (Input.GetKeyDown(KeyCode.Alpha9))
             Inventory._instance.CheckIfObjectIsSelectable(8);
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            Inventory._instance.CheckIfObjectIsSelectable(9);
     }
 }

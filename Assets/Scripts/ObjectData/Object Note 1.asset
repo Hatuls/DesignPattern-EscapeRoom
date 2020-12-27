@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Object Note 1
   m_EditorClassIdentifier: Assembly-CSharp::ObjectNote
-  objName: 
+  objName: Note
   isSelectAble: 0
   canInteract: 1
   isPickUp: 1

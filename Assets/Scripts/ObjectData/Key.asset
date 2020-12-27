@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd27ac9446315048ad2fcf74a54aaf6, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  name: Key
+  objName: Key
   isSelectAble: 1
   canInteract: 1
   isPickUp: 1
-  emptySentence: ' Key'
