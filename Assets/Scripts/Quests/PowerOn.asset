@@ -23,3 +23,5 @@ MonoBehaviour:
   questsNeeded: []
   finishedQuestMessage: Turned light on!
   unfinishedQuestMessage: Turned light off!
+  transitionTransform: {fileID: 5043481360924553802, guid: 361376f13717b9e488a60bfa871c6926,
+    type: 3}
