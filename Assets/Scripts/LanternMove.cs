@@ -9,7 +9,11 @@ public class LanternMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(Vector3.right * -rotationAngle);
-        LeanTween.rotateAround(gameObject, Vector3.right, 2 * rotationAngle, rotationTime).setEaseInOutCubic().setLoopPingPong();   
+        transform.Rotate(Vector3.forward * -rotationAngle,Space.Self);
+        StartRotate();
+    }
+    private void StartRotate() {
+       LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 2*rotationAngle, rotationTime).setEaseInOutQuad().setLoopPingPong();   
+
     }
 }
