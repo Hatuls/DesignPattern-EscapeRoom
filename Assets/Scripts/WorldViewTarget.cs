@@ -3,7 +3,8 @@
 [RequireComponent(typeof(Collider))]
 public class WorldViewTarget : MonoBehaviour
 {
-    [SerializeField] private View view;
+    [SerializeField] private View activeView;
+    [SerializeField] private View targetView;
     private bool subscribedToEvent = false;
     private void Start() {
         SubscribeToEvent();
@@ -12,23 +13,25 @@ public class WorldViewTarget : MonoBehaviour
         UnSubscribeFromEvent();
     }
     private void OnMouseDown() {
-        CameraController._instance.SetView(view);
+        CameraController._instance.SetView(targetView);
         gameObject.SetActive(false);
     }
     private void UnSubscribeFromEvent() {
         if (subscribedToEvent) {
             subscribedToEvent = false;
-            CameraController._instance.ViewChanged -= ResetEvent;
+            CameraController._instance.ViewChanged -= CheckViewEvent;
         }
     }
-    private void ResetEvent(View view) {
-        if (view != this.view)
+    private void CheckViewEvent(View view) {
+        if (view == activeView)
             gameObject.SetActive(true);
+        else
+            gameObject.SetActive(false);
     }
     private void SubscribeToEvent() {
         if (!subscribedToEvent) {
             subscribedToEvent = true;
-            CameraController._instance.ViewChanged += ResetEvent;
+            CameraController._instance.ViewChanged += CheckViewEvent;
         }
     }
 }

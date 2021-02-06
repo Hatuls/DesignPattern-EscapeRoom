@@ -16,8 +16,11 @@ public class CameraController : MonoBehaviour
             Destroy(gameObject);
         currentView = startView;
     }
+    private void Start() {
+        SetTransitionEnd(currentView);
+    }
     public void SetView(View newView) {
-        if (newView == null)
+        if (!newView || inTransition)
             return;
         if (currentView != newView) {
             inTransition = true;
