@@ -83,15 +83,25 @@ public class UIManager : MonoBehaviour
     public bool GetObjectFromInventory(int buttonID) {
         if (buttonID < 0 || buttonID >= InventroyArray.Length || InventroyArray[buttonID] == null)
             return false;
+        
         ObjectSO item = InventroyArray[buttonID];
         if (inventoryScript.CheckIfItemtIsSelectable(item))
             InputManager._instance.SetSelectedObject(item);
         else
             inventoryScript.ItemInventoryInteract(item);
-        ResetButtons();
-
+       
+ResetButtons(buttonID);
         return item.inventoryInteraction != InventoryInteraction.ActivateQuest;
 
+    }
+
+
+    void ResetButtons(int TheOneToNotInclude) {
+        for (int i = 0; i < inventoryButtonsSlots.Length; i++) {
+            if (i == TheOneToNotInclude)
+                continue;
+            inventoryButtonsSlots[i].ResetButton();
+        }
     }
     #endregion
 

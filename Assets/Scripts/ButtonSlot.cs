@@ -40,7 +40,7 @@ public class ButtonSlot : MonoBehaviour
             clrblk.highlightedColor = colorParams[3];
 
         btn.colors = clrblk;
-   
+        isHighlighted = false;
     }
 
     public void AssignAlpha(bool doAlpha) => img.color = doAlpha ? Color.clear : Color.white;
@@ -66,7 +66,7 @@ public class ButtonSlot : MonoBehaviour
         {
 
             ResetButton();
-                isHighlighted = false;
+            
             InputManager._instance.SetSelectedObject(null);
         }
 
