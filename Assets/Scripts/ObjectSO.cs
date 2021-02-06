@@ -30,10 +30,7 @@ public class ObjectSO : ScriptableObject
         }
         else if (canInteract && interactQuest != null) {
             if (interactQuest.Check(this, selectedObject))
-                if (questToggleable)
-                    interactQuest.SwapQuestState();
-                else
-                    interactQuest.ChangeQuestState(true);
+                DoQuest();
         }
     }
     public Sprite GetObjectSprite() {
@@ -42,14 +39,19 @@ public class ObjectSO : ScriptableObject
     }
     public virtual void UseObject() {
         switch (inventoryInteraction) {
-            case InventoryInteraction.Select:
-
-                break;
             case InventoryInteraction.View:
+                //Implement view
                 break;
             case InventoryInteraction.ActivateQuest:
+                DoQuest();
                 break;
         }
+    }
+    private void DoQuest() {
+        if (questToggleable)
+            interactQuest.SwapQuestState();
+        else
+            interactQuest.ChangeQuestState(true);
     }
 }
 

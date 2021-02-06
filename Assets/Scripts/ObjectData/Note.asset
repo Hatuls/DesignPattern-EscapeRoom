@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c4f1257f59ec349a74707e074fe8ae, type: 3}
   m_Name: Note
   m_EditorClassIdentifier: 
-  objName: 
-  isPickUp: 0
+  objName: Note
+  isPickUp: 1
   canInteract: 0
   questToggleable: 0
-  inventoryInteraction: 0
+  inventoryInteraction: 2
   objectImage: {fileID: 0}

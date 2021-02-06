@@ -15,9 +15,6 @@ public class ObjectInScene : MonoBehaviour
     }
 
 
-    public void GotClicked(ObjectSO selectedObject) {
-
-        thisObject.WorldInteraction(gameObject, selectedObject);
-
-    }
+    public void GotClicked(ObjectSO selectedObject) 
+        => thisObject.WorldInteraction(gameObject, selectedObject);
 }

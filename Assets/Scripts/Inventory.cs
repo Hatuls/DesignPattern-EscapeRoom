@@ -1,6 +1,4 @@
-﻿
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Inventory
 {
@@ -14,10 +12,10 @@ public class Inventory
 
             if (_instance == null)
                 _instance = new Inventory();
-            
-            return _instance;        
+
+            return _instance;
         }
-    
+
     }
 
     Inventory() {
@@ -29,37 +27,35 @@ public class Inventory
 
         for (int i = 0; i < inventory.Length; i++)
             inventory[i] = null;
-        
+
     }
 
 
 
-    public ObjectSO[] GetInventory { get {
+    public ObjectSO[] GetInventory {
+        get {
             if (inventory == null)
                 inventory = new ObjectSO[5];
-            
-            return inventory; 
+
+            return inventory;
         }
     }
 
 
 
-    public void AddToInventory(ObjectSO item)
-    {
- 
+    public void AddToInventory(ObjectSO item) {
 
-        for (int i = 0; i < inventory.Length; i++)
-        {
 
-            if (inventory[i] == null)
-            {
+        for (int i = 0; i < inventory.Length; i++) {
+
+            if (inventory[i] == null) {
                 inventory[i] = item;
-                Debug.Log(item.objName + " Was added to slot number " + (i+1) + ".");
+                Debug.Log(item.objName + " Was added to slot number " + (i + 1) + ".");
                 break;
             }
         }
 
-        UIManager.GetInstance.UpdateUIInventory();
+ //       UIManager.GetInstance.UpdateUIInventory();
     }
     //public void RemoveFromInventory(ObjectAbst item)
     //{
@@ -79,28 +75,20 @@ public class Inventory
     //    }
     //}
 
-    public bool CheckIfObjectIsSelectable(int x)
-    {
-        if (inventory[x] == null)
-            return false; ;
+    public bool CheckIfItemtIsSelectable(int ID)
+        => CheckIfItemtIsSelectable(inventory[ID]);
+    public bool CheckIfItemtIsSelectable(ObjectSO item) {
+        if (!item)
+            return false;
 
 
+        if (item.inventoryInteraction == InventoryInteraction.Select)
+            return true;
 
-
-            inventory[x].UseObject();
-
-
-            if (inventory[x].inventoryInteraction == InventoryInteraction.Select)
-            {
-                InputManager._instance.SetUseObject(inventory[x]);
-                Debug.Log("Now Holding a " + inventory[x].objName + " Object.");
-            }
-
-
-        return true;
+        return false;
     }
-
-    public void GetObjectFromInventory(int x) {
-        InputManager._instance.SetUseObject(inventory[x]);
-    }
+    public void ItemInventoryInteract(int ID)
+        => ItemInventoryInteract(inventory[ID]);
+    public void ItemInventoryInteract(ObjectSO item) 
+        => item.UseObject();
 }

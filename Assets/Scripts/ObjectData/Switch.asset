@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: 
   isPickUp: 0
-  canInteract: 0
-  questToggleable: 0
+  canInteract: 1
+  questToggleable: 1
   inventoryInteraction: 0
   objectImage: {fileID: 0}

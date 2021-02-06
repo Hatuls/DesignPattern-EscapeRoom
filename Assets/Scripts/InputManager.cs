@@ -16,15 +16,17 @@ public class InputManager : MonoBehaviour
     {
         _instance = this;
         myCamera = Camera.main;
-        SetUseObject(null);
+        SetSelectedObject(null);
     }
-    public void SetUseObject(ObjectSO useSelectedObject)
+    public void SetSelectedObject(ObjectSO useSelectedObject)
     {
         if (useSelectedObject == null)
         {
             useObject = null;
             return;
         }
+
+        Debug.Log("Now Holding a " + useSelectedObject.objName + " Object.");
 
 
         useObject = useSelectedObject;
@@ -55,23 +57,27 @@ public class InputManager : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(5);
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(6);
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(7);
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-            Inventory.GetInstance.CheckIfObjectIsSelectable(8);
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    if (!Inventory.GetInstance.CheckIfItemtIsSelectable(0))
+        //        Inventory.GetInstance.ItemInventoryInteract(0);
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    if (!Inventory.GetInstance.CheckIfItemtIsSelectable(1))
+        //        Inventory.GetInstance.ItemInventoryInteract(1);
+        //    else
+        //        SetSelectedObject(Inventory.GetInstance.GetInventory[1]);
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(2);
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(3);
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(4);
+        //if (Input.GetKeyDown(KeyCode.Alpha6))           
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(5);
+        //if (Input.GetKeyDown(KeyCode.Alpha7))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(6);
+        //if (Input.GetKeyDown(KeyCode.Alpha8))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(7);
+        //if (Input.GetKeyDown(KeyCode.Alpha9))
+        //    Inventory.GetInstance.CheckIfItemtIsSelectable(8);
     }
 }
