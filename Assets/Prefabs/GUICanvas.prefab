@@ -855,7 +855,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7584418617977426300}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7584418617880318598}
+        m_MethodName: LookRight
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7584418617977426298}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7584418618356739222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1063,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7584418618869168519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7584418617880318598}
+        m_MethodName: LookLeft
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7584418618869168517}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7584418618927008843
 GameObject:
   m_ObjectHideFlags: 0

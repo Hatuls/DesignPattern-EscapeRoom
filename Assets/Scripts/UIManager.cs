@@ -13,22 +13,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button LeftArrow, RightArrow , ForwardArrow , BackwardArrow;
     ButtonSlot[] inventoryButtonsSlots;
     ObjectSO[] InventroyArray;
-    public void SetActiveView(View view) { currentView = view;
-        SetVisabilityViewAllButtons(true);
-    }
-    public static UIManager GetInstance => _instance;
+   public static UIManager GetInstance => _instance;
     private void Awake() {
         _instance = this;
         Init();
     }
-    private void Init() {
+    private void Init()
+    {
         inventoryScript = Inventory.GetInstance;
         InventroyArray = inventoryScript.GetInventory;
         cmra = CameraController._instance;
 
-        if (inventoryPF == null || inventoryPF.Length == 0|| cmra == null)
+        if (inventoryPF == null || inventoryPF.Length == 0 || cmra == null)
             return;
-
+        
         if (!AssignComponenets())
             return;
 
@@ -37,7 +35,7 @@ public class UIManager : MonoBehaviour
     }
     private bool AssignComponenets() {
         inventoryButtonsSlots = GetComponentsInChildren<ButtonSlot>();
-
+        cmra.ViewChanged += SetActiveView;
 
         if (inventoryButtonsSlots == null || inventoryButtonsSlots.Length == 0)
             return false;
@@ -108,24 +106,41 @@ public class UIManager : MonoBehaviour
 
 
     #region View UI
-    
-    public void LookLeft() {
+    public void SetActiveView(View view)
+    {
+        currentView = view;
+        SetVisabilityViewAllButtons(true);
+    }
+    public void LookLeft(GameObject buttonGO) {
         cmra.SetView(currentView.LeftView);
+        HideEveryThingExcept(buttonGO);
     }
-    public void LookForward() {
+    public void LookForward(GameObject buttonGO) {
         cmra.SetView(currentView.ForwardView);
+        HideEveryThingExcept(buttonGO);
     }
-    public void LookBackward() {
+    public void LookBackward(GameObject buttonGO) {
 
         cmra.SetView(currentView.BackwardsView);
+        HideEveryThingExcept(buttonGO);
     }
-    public void LookRight() {
+    public void LookRight(GameObject buttonGO) {
         cmra.SetView(currentView.RightView);
+        HideEveryThingExcept(buttonGO);
     }
 
-    void HideEveryThingExcept() { 
-    
-    
+    void HideEveryThingExcept(GameObject dontHideMe) {
+        if (ForwardArrow != dontHideMe && ForwardArrow.gameObject.activeSelf != false)
+            ForwardArrow.gameObject.SetActive(false);
+
+        if (BackwardArrow != dontHideMe && BackwardArrow.gameObject.activeSelf != false)
+            BackwardArrow.gameObject.SetActive(false);
+
+        if (RightArrow != dontHideMe && RightArrow.gameObject.activeSelf != false)
+            RightArrow.gameObject.SetActive(false);
+
+        if (LeftArrow != dontHideMe && LeftArrow.gameObject.activeSelf != false)
+            LeftArrow.gameObject.SetActive(false);
     }
     void SetVisabilityViewAllButtons(bool ToActivate) {
 
