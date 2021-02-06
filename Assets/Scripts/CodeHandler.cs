@@ -1,18 +1,23 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class CodeHandler : MonoBehaviour
 {
     static CodeHandler _instance;
     [SerializeField] InputButton[] btns;
-   [SerializeField] int[] playersInput = new int[3];
-   [SerializeField] int[] password ;
+    [SerializeField] int[] playersInput = new int[3];
+    [SerializeField] int[] password;
     [SerializeField] TextMeshPro tmp;
     int currentInsert = 0;
+    [SerializeField]
+    private GameObject Parent;
+
     private void Awake()
     {
         _instance = this;
         ResetPassword();
+        Parent.SetActive(true);
     }
     public static CodeHandler GetInstance => _instance;
 
@@ -24,7 +29,7 @@ public class CodeHandler : MonoBehaviour
 
         for (int i = 0; i < playersInput.Length; i++)
         {
-            
+
             checkAnswer &= playersInput[i] == password[i];
             if (!checkAnswer || playersInput[i] == -1)
             {
@@ -35,8 +40,9 @@ public class CodeHandler : MonoBehaviour
         CorrectPassword();
     }
 
-  
-    void ResetPassword() {
+
+    void ResetPassword()
+    {
 
         for (int i = 0; i < playersInput.Length; i++)
             playersInput[i] = -1;
@@ -45,16 +51,19 @@ public class CodeHandler : MonoBehaviour
         PrintDebug();
     }
 
-    void WrongPassword() {
+    void WrongPassword()
+    {
 
         Debug.Log("Wrong Answer");
 
         ShowAnswer(false);
-        ResetPassword(); 
+        ResetPassword();
     }
-    void CorrectPassword() {
+    void CorrectPassword()
+    {
         Debug.Log("Correct Answer");
         ShowAnswer(true);
+        StartCoroutine(DisableParent());
     }
 
     public void InsertNumber(int input)
@@ -65,30 +74,32 @@ public class CodeHandler : MonoBehaviour
             return;
         }
         else if (input == 12)
-        { 
-        ResetPassword();
+        {
+            ResetPassword();
             return;
         }
         if (currentInsert >= password.Length)
-            return; 
+            return;
 
         playersInput[currentInsert] = input;
         currentInsert++;
 
-        
+
 
         PrintDebug();
     }
-    
-    public void PrintDebug() {
-        string playerInputsCache ="";
 
-        for (int i = 0; i < playersInput.Length; i++) {
+    public void PrintDebug()
+    {
+        string playerInputsCache = "";
+
+        for (int i = 0; i < playersInput.Length; i++)
+        {
             if (playersInput[i] != -1)
-             playerInputsCache += playersInput[i].ToString();
+                playerInputsCache += playersInput[i].ToString();
         }
-           
-        
+
+
         tmp.text = playerInputsCache;
         //Debug.Log(string.Format("The Password is {0}, {1} , {2}", password[0], password[1], password[2]));
         //Debug.Log(string.Format("The player input is {0}, {1} , {2} ", playersInput[0], playersInput[1], playersInput[2]));
@@ -106,4 +117,13 @@ public class CodeHandler : MonoBehaviour
 
 
     }
+
+    IEnumerator DisableParent()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Parent.SetActive(false);
+    }
+
+
+
 }
