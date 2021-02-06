@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Object Note 1
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectNote
+  m_Script: {fileID: 11500000, guid: 74c4f1257f59ec349a74707e074fe8ae, type: 3}
+  m_Name: Note
+  m_EditorClassIdentifier: 
   objName: Note
-  isSelectAble: 0
-  canInteract: 1
   isPickUp: 1
-  emptySentence: 
+  canInteract: 0
+  questToggleable: 0
+  inventoryInteraction: 2
+  objectImage: {fileID: -8623739017901063677, guid: 1382cbb1a40478f4aa685518c6b82466,
+    type: 3}

@@ -9,19 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
   m_Name: PowerOn
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
-  handlingScript:
-    quest: {fileID: 11400000}
-    objectsToSwap:
-    - {fileID: 0}
-    - {fileID: 0}
-    isCompleted: 1
-  object1ToComplete: {fileID: 11400000, guid: 6bc42899f5f26ca44a280039f1b99a0d, type: 2}
+  object1ToComplete: {fileID: 11400000, guid: b890d1fb0a2e5a04c91475a604c7a72a, type: 2}
   object2ToComplete: {fileID: 0}
   questsNeeded: []
   finishedQuestMessage: Turned light on!
   unfinishedQuestMessage: Turned light off!
-  transitionTransform: {fileID: 5043481360924553802, guid: 361376f13717b9e488a60bfa871c6926,
-    type: 3}

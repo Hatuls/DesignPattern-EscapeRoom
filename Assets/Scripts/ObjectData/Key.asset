@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd27ac9446315048ad2fcf74a54aaf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 74c4f1257f59ec349a74707e074fe8ae, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
   objName: Key
-  isSelectAble: 1
-  canInteract: 1
   isPickUp: 1
-  objectImage: {fileID: 21300000, guid: f2081c8910501c4449279b16d783e505, type: 3}
+  canInteract: 0
+  questToggleable: 0
+  inventoryInteraction: 0
+  objectImage: {fileID: -8194334501198835173, guid: 1382cbb1a40478f4aa685518c6b82466,
+    type: 3}

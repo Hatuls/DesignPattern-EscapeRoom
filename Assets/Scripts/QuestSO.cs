@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest/Generic Quest")]
-public class QuestAbstSO : ScriptableObject
+public class QuestSO : ScriptableObject
 {
-    [HideInInspector]
-    public QuestHandler handlingScript;
-    public ObjectAbst object1ToComplete;
-    public ObjectAbst object2ToComplete;
-    public QuestAbstSO[] questsNeeded;
+    [NonSerialized]
+    public Quest handlingScript;
+    public ObjectSO object1ToComplete;
+    public ObjectSO object2ToComplete;
+    public QuestSO[] questsNeeded;
     public string finishedQuestMessage;
     public string unfinishedQuestMessage;
 
@@ -19,11 +20,11 @@ public class QuestAbstSO : ScriptableObject
         if (unfinishedQuestMessage != null && unfinishedQuestMessage != "")
             Debug.Log(unfinishedQuestMessage);
     }
-    public bool Check(ObjectAbst object1, ObjectAbst object2) {
+    public bool Check(ObjectSO object1, ObjectSO object2) {
         if ((object1 == object1ToComplete && object2 == object2ToComplete)
             || (object1 == object2ToComplete && object2 == object1ToComplete)) {
             bool finishedAllQuests = true;
-            foreach (QuestAbstSO quest in questsNeeded) {
+            foreach (QuestSO quest in questsNeeded) {
                 finishedAllQuests &= quest.handlingScript.GetSetIsCompleted;
             }
             if (finishedAllQuests) {
