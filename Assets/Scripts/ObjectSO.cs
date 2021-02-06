@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum InventoryInteraction { Select, View, ActivateQuest }
+public enum InventoryInteraction { Select, Inspect, ActivateQuest }
 [CreateAssetMenu(fileName = "New Object", menuName = "Object/Generic")]
 public class ObjectSO : ScriptableObject
 {
@@ -16,11 +16,13 @@ public class ObjectSO : ScriptableObject
     [Tooltip("Whether I can select, view or use the item when it's in the inventory.")]
     public InventoryInteraction inventoryInteraction;
     [SerializeField] Sprite objectImage = null;
+    [SerializeField] Sprite inspectImage;
+   
+
     public void ToPickUp(GameObject gameObject) {
         Destroy(gameObject);
         Inventory.GetInstance.AddToInventory(this);
     }
-
 
     public virtual void WorldInteraction(GameObject gameObject, ObjectSO selectedObject) {
         if (selectedObject == null && isPickUp) {
@@ -39,8 +41,8 @@ public class ObjectSO : ScriptableObject
     }
     public virtual void UseObject() {
         switch (inventoryInteraction) {
-            case InventoryInteraction.View:
-                //Implement view
+            case InventoryInteraction.Inspect:
+                UIManager.GetInstance.InspectItem(inspectImage);
                 Debug.Log("View Item");
                 break;
             case InventoryInteraction.ActivateQuest:

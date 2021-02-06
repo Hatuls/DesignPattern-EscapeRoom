@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button LeftArrow, RightArrow, ForwardArrow, BackwardArrow;
     ButtonSlot[] inventoryButtonsSlots;
     ObjectSO[] InventroyArray;
+    [SerializeField] Image inspectPanelImage;
+    bool isInspecting = false;
     public static UIManager GetInstance => _instance;
     private void Awake() {
         _instance = this;
@@ -49,9 +51,22 @@ public class UIManager : MonoBehaviour
 
 
 
+    public void InspectItem(Sprite toInspect) {
+        if (!toInspect)
+            return;
+        isInspecting = true;
+        inspectPanelImage.gameObject.SetActive(isInspecting);
+        inspectPanelImage.sprite = toInspect;
+    }
 
-
-
+    private void Update()
+    {
+        if (isInspecting && Input.anyKeyDown)
+        {
+            ResetButtons();
+            isInspecting = false;
+        }
+    }
 
     #region Ui Inventory
     public void UpdateUIInventory() {
@@ -78,6 +93,10 @@ public class UIManager : MonoBehaviour
     public void ResetButtons() {
         for (int i = 0; i < inventoryButtonsSlots.Length; i++)
             inventoryButtonsSlots[i].ResetButton();
+
+        if (inspectPanelImage.IsActive())
+           inspectPanelImage.gameObject.SetActive(false);
+        
     }
 
     public bool GetObjectFromInventory(int buttonID) {
