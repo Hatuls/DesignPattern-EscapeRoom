@@ -3,7 +3,8 @@
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float transitionSpeed;
-    private Transform currentTransform;
+    [SerializeField] private View startView;
+    private View currentView;
     private static bool inTransition = false;
     public static bool GetInTransition => inTransition;
     public static CameraController _instance;
@@ -12,17 +13,20 @@ public class CameraController : MonoBehaviour
             _instance = this;
         else if (_instance != this)
             Destroy(gameObject);
-        currentTransform = transform;
+        currentView = startView;
     }
-    public void SetAnchor(Transform newTransform) {
-        if (newTransform == null)
+    public void SetView(View newView) {
+        if (newView == null)
             return;
-        if (currentTransform != newTransform) {
+        if (currentView != newView) {
             inTransition = true;
             LeanTween.cancel(gameObject);
-            LeanTween.move(gameObject, newTransform.position, transitionSpeed);
-            LeanTween.rotateY(gameObject, newTransform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => { inTransition = false; });
+            LeanTween.move(gameObject, newView.transform.position, transitionSpeed);
+            LeanTween.rotateY(gameObject, newView.transform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => {  });
         }
-
+    }
+    private void SetTransitionEnd(View view) {
+        inTransition = false;
+        //Notify UImanager about new view 
     }
 }
