@@ -8,10 +8,10 @@ public class ObjectAbst : ScriptableObject
     public bool isSelectAble; // can i select it when its in my inventory
     public bool canInteract; // can i use it on scene
     public bool isPickUp; // pick it up
+    [SerializeField] Sprite objectImage = null;
     public void ToPickUp() {
         gameObject.SetActive(!gameObject.activeSelf);
-        Inventory._instance.AddToInventory(this);
-
+        Inventory.GetInstance.AddToInventory(this);
     }
 
 
@@ -29,15 +29,11 @@ public class ObjectAbst : ScriptableObject
         else {
             QuestManager._instance.ChangeQuestState(this, objectAbst, true);
         }
-            
-        
-
-
-        
-
-
     }
-
+    public Sprite GetObjectSprite() {
+       
+        return objectImage;
+    }
     public virtual void UseObject() { }
 }
 

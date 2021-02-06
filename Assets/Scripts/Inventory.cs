@@ -1,22 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    public static Inventory _instance;
+    private static Inventory _instance;
 
-    ObjectAbst[] inventory = new ObjectAbst[9];
+    ObjectAbst[] inventory;
 
+    public static Inventory GetInstance {
 
-    public ObjectAbst[] GetInventory { get { return inventory; } }
-    private void Awake()
-    {
-        _instance = this;
+        get {
+
+            if (_instance == null)
+                _instance = new Inventory();
+            
+            return _instance;        
+        }
+    
+    }
+
+    Inventory() {
+        ResetInventory();
+    }
+    private void ResetInventory() {
+
+        inventory = new ObjectAbst[5];
+
         for (int i = 0; i < inventory.Length; i++)
-        {
             inventory[i] = null;
+        
+    }
+
+
+
+    public ObjectAbst[] GetInventory { get {
+            if (inventory == null)
+                inventory = new ObjectAbst[5];
+            
+            return inventory; 
         }
     }
 
@@ -37,23 +58,23 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void RemoveFromInventory(ObjectAbst item)
-    {
-        if (item == null)
-            return;
+    //public void RemoveFromInventory(ObjectAbst item)
+    //{
+    //    if (item == null)
+    //        return;
 
 
-        for (int i = 0; i < inventory.Length; i++)
-        {
+    //    for (int i = 0; i < inventory.Length; i++)
+    //    {
 
-            if (inventory[i].objName == item.objName)
-            {
-                inventory[i] = null;
+    //        if (inventory[i].objName == item.objName)
+    //        {
+    //            inventory[i] = null;
 
-                break;
-            }
-        }
-    }
+    //            break;
+    //        }
+    //    }
+    //}
 
     public void CheckIfObjectIsSelectable(int x)
     {
@@ -77,7 +98,5 @@ public class Inventory : MonoBehaviour
 
     public void GetObjectFromInventory(int x) {
         InputManager._instance.SetUseObject(inventory[x]);
-
-
     }
 }
