@@ -17,4 +17,4 @@ MonoBehaviour:
   canInteract: 0
   questToggleable: 0
   inventoryInteraction: 0
-  objectImage: {fileID: 21300000, guid: 905ef96a85ec3164fa747ee4f656c938, type: 3}
+  objectImage: {fileID: 21300000, guid: 176a4557b2fbc3247a025b339d17fdd6, type: 3}
