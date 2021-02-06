@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour
         if (inTransition == true)
             return;
 
-        inTransition = false;
+        inTransition = true;
 
         HideEveryThingExcept(buttonGO);
         cmra.SetView(currentView.ForwardView);
@@ -149,7 +149,7 @@ public class UIManager : MonoBehaviour
         if (inTransition == true)
             return;
 
-        inTransition = false;
+        inTransition = true;
 
 
         HideEveryThingExcept(buttonGO);
@@ -159,7 +159,7 @@ public class UIManager : MonoBehaviour
         if (inTransition == true)
             return;
 
-        inTransition = false;
+        inTransition = true;
 
         HideEveryThingExcept(buttonGO);
         cmra.SetView(currentView.RightView);
