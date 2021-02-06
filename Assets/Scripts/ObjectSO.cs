@@ -41,6 +41,7 @@ public class ObjectSO : ScriptableObject
         switch (inventoryInteraction) {
             case InventoryInteraction.View:
                 //Implement view
+                Debug.Log("View Item");
                 break;
             case InventoryInteraction.ActivateQuest:
                 DoQuest();

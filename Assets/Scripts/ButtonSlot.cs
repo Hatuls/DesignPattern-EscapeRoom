@@ -22,7 +22,7 @@ public class ButtonSlot : MonoBehaviour
         colorParams[1] = clrblk.pressedColor;
         colorParams[2] = clrblk.selectedColor;
         colorParams[3] = clrblk.highlightedColor;
-        AssignAlpha(true);
+        
     }
 
     public void ResetButton()
@@ -39,7 +39,8 @@ public class ButtonSlot : MonoBehaviour
         if (clrblk.highlightedColor != colorParams[3])
             clrblk.highlightedColor = colorParams[3];
 
-        btn.colors = clrblk; 
+        btn.colors = clrblk;
+   
     }
 
     public void AssignAlpha(bool doAlpha) => img.color = doAlpha ? Color.clear : Color.white;
@@ -51,17 +52,22 @@ public class ButtonSlot : MonoBehaviour
     }
     public void ButtonGotClicked(int buttonID) {
 
-
-
-        if (isHighlighted)
+        if (!isHighlighted )
         {
-            clrblk.normalColor = UIManager.GetInstance.GetObjectFromItem(buttonID) ? colorParams[1] : colorParams[0];
-            btn.colors = clrblk;
+            if (UIManager.GetInstance.GetObjectFromInventory(buttonID))
+            {
+                clrblk.normalColor = colorParams[1];
+                btn.colors = clrblk;  
+                isHighlighted = true;
+            }
+         
         }
         else
+        {
             ResetButton();
-        
-        isHighlighted = !isHighlighted;
+                isHighlighted = false;
+        }
+
     }
 
 }
