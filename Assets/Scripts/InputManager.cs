@@ -16,27 +16,41 @@ public class InputManager : MonoBehaviour
     {
         _instance = this;
         myCamera = Camera.main;
+        SetUseObject(null);
     }
     public void SetUseObject(ObjectSO useSelectedObject)
     {
+        if (useSelectedObject == null)
+        {
+            useObject = null;
+            return;
+        }
+
 
         useObject = useSelectedObject;
-
     }
 
-
+    ObjectInScene objectInScene;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            objectInScene = null;
             _ray = myCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out _hitInfo, 100f))
             {
 
                 Debug.Log("Clicked on " + _hitInfo.collider.gameObject.name + " while holding " + (useObject == null ? "nothing." : useObject.name));
-                _hitInfo.collider.gameObject.GetComponent<ObjectInScene>().GotClicked(useObject);
+                _hitInfo.collider.gameObject.TryGetComponent<ObjectInScene>(out objectInScene);
+
+                    
+                if (objectInScene != null)
+                objectInScene.GotClicked(useObject);
+
+                
+                
             }
         }
 

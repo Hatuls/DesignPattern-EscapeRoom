@@ -1,4 +1,5 @@
 ﻿
+using TMPro;
 using UnityEngine;
 
 public class Inventory
@@ -57,6 +58,8 @@ public class Inventory
                 break;
             }
         }
+
+        UIManager.GetInstance.UpdateUIInventory();
     }
     //public void RemoveFromInventory(ObjectAbst item)
     //{
@@ -76,10 +79,14 @@ public class Inventory
     //    }
     //}
 
-    public void CheckIfObjectIsSelectable(int x)
+    public bool CheckIfObjectIsSelectable(int x)
     {
-        if (inventory[x] != null)
-        {
+        if (inventory[x] == null)
+            return false; ;
+
+
+
+
             inventory[x].UseObject();
 
 
@@ -88,12 +95,9 @@ public class Inventory
                 InputManager._instance.SetUseObject(inventory[x]);
                 Debug.Log("Now Holding a " + inventory[x].objName + " Object.");
             }
-        }
-        else
-        {
-            Debug.Log("Now holding nothing.");
-        }
 
+
+        return true;
     }
 
     public void GetObjectFromInventory(int x) {
