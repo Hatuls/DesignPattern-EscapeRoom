@@ -4,6 +4,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float transitionSpeed;
     [SerializeField] private View startView;
+    public event System.Action<View> ViewChanged;
     private View currentView;
     private static bool inTransition = false;
     public static bool GetInTransition => inTransition;
@@ -22,11 +23,14 @@ public class CameraController : MonoBehaviour
             inTransition = true;
             LeanTween.cancel(gameObject);
             LeanTween.move(gameObject, newView.transform.position, transitionSpeed);
-            LeanTween.rotateY(gameObject, newView.transform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => {  });
+            LeanTween.rotateY(gameObject, newView.transform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => { SetTransitionEnd(newView); });
         }
     }
     private void SetTransitionEnd(View view) {
         inTransition = false;
+        currentView = view;
+        ViewChanged(view);
+        Debug.Log("Changed View");
         //Notify UImanager about new view 
     }
 }
