@@ -161,8 +161,8 @@ public class UIManager : MonoBehaviour
 
         inTransition = false;
 
-        cmra.SetView(currentView.RightView);
         HideEveryThingExcept(buttonGO);
+        cmra.SetView(currentView.RightView);
     }
 
     void HideEveryThingExcept(Button dontHideMe) {
