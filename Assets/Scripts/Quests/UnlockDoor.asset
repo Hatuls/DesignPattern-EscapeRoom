@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
   m_Name: UnlockDoor
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
-  object1ToComplete: {fileID: 11400000, guid: ac2c00584bd45d441aad752422efe9be, type: 2}
-  object2ToComplete: {fileID: 11400000, guid: 2e2a6f7f04eff3746af6477cb74b5460, type: 2}
+  object1ToComplete: {fileID: 11400000, guid: 2e2a6f7f04eff3746af6477cb74b5460, type: 2}
+  object2ToComplete: {fileID: 0}
   questsNeeded:
-  - {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
+  - {fileID: 11400000, guid: 3a6218ebe49c8994e98b6a6f62b4aaa3, type: 2}
+  - {fileID: 11400000, guid: d3bc7610e2d69904babad486bca943ae, type: 2}
   finishedQuestMessage: You unlocked the door!!!!
   unfinishedQuestMessage: 

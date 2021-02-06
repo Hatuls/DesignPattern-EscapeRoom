@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
+  m_Name: UnlockGreenKey
+  m_EditorClassIdentifier: 
+  object1ToComplete: {fileID: 11400000, guid: 4b1f14a88c968354c8eaa73569f1fcad, type: 2}
+  object2ToComplete: {fileID: 11400000, guid: cbcfa2712b52c3042a18404f5e7919cf, type: 2}
+  questsNeeded: []
+  finishedQuestMessage: you unlocked the green lock
+  unfinishedQuestMessage: 

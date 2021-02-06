@@ -11,6 +11,7 @@ public class Quest
 
     public void SwapObjects() {
         foreach (GameObject obj in objectsToSwap) {
+            if(obj)
             obj.SetActive(!obj.activeSelf);
         }
     }
