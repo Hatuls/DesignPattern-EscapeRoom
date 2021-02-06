@@ -55,7 +55,7 @@ public class Inventory
             }
         }
 
- //       UIManager.GetInstance.UpdateUIInventory();
+        UIManager.GetInstance.UpdateUIInventory();
     }
     //public void RemoveFromInventory(ObjectAbst item)
     //{
