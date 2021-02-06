@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     CameraController cmra;
     View currentView;
     [SerializeField] Sprite defaultSprite;
+    Button lastViewButtonSelected;
     [SerializeField] Button LeftArrow, RightArrow , ForwardArrow , BackwardArrow;
     ButtonSlot[] inventoryButtonsSlots;
     ObjectSO[] InventroyArray;
@@ -23,6 +25,7 @@ public class UIManager : MonoBehaviour
         inventoryScript = Inventory.GetInstance;
         InventroyArray = inventoryScript.GetInventory;
         cmra = CameraController._instance;
+        cmra.ViewChanged += SetActiveView;
 
         if (inventoryPF == null || inventoryPF.Length == 0 || cmra == null)
             return;
@@ -35,7 +38,7 @@ public class UIManager : MonoBehaviour
     }
     private bool AssignComponenets() {
         inventoryButtonsSlots = GetComponentsInChildren<ButtonSlot>();
-        cmra.ViewChanged += SetActiveView;
+       
 
         if (inventoryButtonsSlots == null || inventoryButtonsSlots.Length == 0)
             return false;
@@ -106,42 +109,80 @@ public class UIManager : MonoBehaviour
 
 
     #region View UI
+    bool inTransition = false;
     public void SetActiveView(View view)
     {
-        currentView = view;
-        SetVisabilityViewAllButtons(true);
-    }
-    public void LookLeft(GameObject buttonGO) {
-        cmra.SetView(currentView.LeftView);
-        HideEveryThingExcept(buttonGO);
-    }
-    public void LookForward(GameObject buttonGO) {
-        cmra.SetView(currentView.ForwardView);
-        HideEveryThingExcept(buttonGO);
-    }
-    public void LookBackward(GameObject buttonGO) {
+        if(lastViewButtonSelected != null)
+        HighLightArrow(lastViewButtonSelected, false);
 
-        cmra.SetView(currentView.BackwardsView);
-        HideEveryThingExcept(buttonGO);
+        SetVisabilityViewAllButtons(true);
+
+        currentView = view;
+
+        inTransition = false;
     }
-    public void LookRight(GameObject buttonGO) {
+    public void LookLeft(Button buttonGO) {
+        if (inTransition == true)
+            return ;
+
+        inTransition = true;
+
+        HideEveryThingExcept(buttonGO);
+        cmra.SetView(currentView.LeftView);
+    }
+    public void LookForward(Button buttonGO) {
+        if (inTransition == true)
+            return;
+
+        inTransition = false;
+
+        HideEveryThingExcept(buttonGO);
+        cmra.SetView(currentView.ForwardView);
+    }
+    public void LookBackward(Button buttonGO) {
+        if (inTransition == true)
+            return;
+
+        inTransition = false;
+
+
+        HideEveryThingExcept(buttonGO);
+        cmra.SetView(currentView.BackwardsView);
+    }
+    public void LookRight(Button buttonGO) {
+        if (inTransition == true)
+            return;
+
+        inTransition = false;
+
         cmra.SetView(currentView.RightView);
         HideEveryThingExcept(buttonGO);
     }
 
-    void HideEveryThingExcept(GameObject dontHideMe) {
+    void HideEveryThingExcept(Button dontHideMe) {
         if (ForwardArrow != dontHideMe && ForwardArrow.gameObject.activeSelf != false)
             ForwardArrow.gameObject.SetActive(false);
 
-        if (BackwardArrow != dontHideMe && BackwardArrow.gameObject.activeSelf != false)
+        if (BackwardArrow!= dontHideMe && BackwardArrow.gameObject.activeSelf != false)
             BackwardArrow.gameObject.SetActive(false);
 
-        if (RightArrow != dontHideMe && RightArrow.gameObject.activeSelf != false)
+        if (RightArrow!= dontHideMe && RightArrow.gameObject.activeSelf != false)
             RightArrow.gameObject.SetActive(false);
 
         if (LeftArrow != dontHideMe && LeftArrow.gameObject.activeSelf != false)
             LeftArrow.gameObject.SetActive(false);
+
+        HighLightArrow(dontHideMe , true);
     }
+
+  
+    private void HighLightArrow(Button HighlightMeButton , bool toHighlight)
+    {
+        HighlightMeButton.gameObject.GetComponent<Image>().color= toHighlight? Color.yellow: Color.white;
+     
+        lastViewButtonSelected = HighlightMeButton;
+    }
+
     void SetVisabilityViewAllButtons(bool ToActivate) {
 
 
@@ -156,6 +197,10 @@ public class UIManager : MonoBehaviour
 
         if (LeftArrow.gameObject.activeSelf != ToActivate)
             LeftArrow.gameObject.SetActive(ToActivate);
+
+
+
+
     }
     #endregion
 }
