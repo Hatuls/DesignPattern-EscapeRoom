@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167863056707771493}
+  - component: {fileID: 167863056707771418}
   - component: {fileID: 167863056707771492}
   - component: {fileID: 167863056707771495}
   - component: {fileID: 167863056707771494}
-  - component: {fileID: 167863056707771418}
   m_Layer: 0
   m_Name: Keypad
   m_TagString: Untagged
@@ -45,6 +45,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167863056707771418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167863056707771489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ac7b3428240a9488a977bd3cbaeece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisObject: {fileID: 11400000, guid: 04b6d7f705556b14dbac17281c44f84f, type: 2}
+  quest:
+    questSO: {fileID: 11400000, guid: 7c26bd1ba62fabc438b84ca6962bd044, type: 2}
+    objectsToSwap:
+    - {fileID: 167863057840585788}
+    - {fileID: 167863058278613556}
+    transform: {fileID: 0}
+    isCompleted: 0
 --- !u!33 &167863056707771492
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105,19 +125,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &167863056707771418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167863056707771489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b9d14a0f8d95143b7ce75dbbc08775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisObject: {fileID: 11400000, guid: 04b6d7f705556b14dbac17281c44f84f, type: 2}
 --- !u!1 &167863057053770141
 GameObject:
   m_ObjectHideFlags: 0

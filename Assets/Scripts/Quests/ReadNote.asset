@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
   m_Name: ReadNote
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
-  handlingScript:
-    quest: {fileID: 11400000}
-    objectsToSwap: []
-    isCompleted: 1
-  object1ToComplete: {fileID: 11400000, guid: 5f4f0939133b73e43aa7e31af18643fa, type: 2}
+  object1ToComplete: {fileID: 0}
   object2ToComplete: {fileID: 0}
   questsNeeded: []
   finishedQuestMessage: You read a note with the password!

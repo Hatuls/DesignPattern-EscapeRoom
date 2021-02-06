@@ -20,8 +20,8 @@ public class CameraController : MonoBehaviour
         if (currentTransform != newTransform) {
             inTransition = true;
             LeanTween.cancel(gameObject);
-            //LeanTween.move(gameObject, posAnchorsTransforms[currentPosIndex].position, transitionSpeed);
-            //LeanTween.rotateY(gameObject, posAnchorsTransforms[currentPosIndex].rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => { inTransition = false; });
+            LeanTween.move(gameObject, newTransform.position, transitionSpeed);
+            LeanTween.rotateY(gameObject, newTransform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => { inTransition = false; });
         }
 
     }

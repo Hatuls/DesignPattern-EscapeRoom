@@ -5,7 +5,7 @@ public class Inventory
 {
     private static Inventory _instance;
 
-    ObjectAbst[] inventory;
+    ObjectSO[] inventory;
 
     public static Inventory GetInstance {
 
@@ -24,7 +24,7 @@ public class Inventory
     }
     private void ResetInventory() {
 
-        inventory = new ObjectAbst[5];
+        inventory = new ObjectSO[5];
 
         for (int i = 0; i < inventory.Length; i++)
             inventory[i] = null;
@@ -33,9 +33,9 @@ public class Inventory
 
 
 
-    public ObjectAbst[] GetInventory { get {
+    public ObjectSO[] GetInventory { get {
             if (inventory == null)
-                inventory = new ObjectAbst[5];
+                inventory = new ObjectSO[5];
             
             return inventory; 
         }
@@ -43,7 +43,7 @@ public class Inventory
 
 
 
-    public void AddToInventory(ObjectAbst item)
+    public void AddToInventory(ObjectSO item)
     {
  
 
@@ -83,7 +83,7 @@ public class Inventory
             inventory[x].UseObject();
 
 
-            if (inventory[x].isSelectAble)
+            if (inventory[x].inventoryInteraction == InventoryInteraction.Select)
             {
                 InputManager._instance.SetUseObject(inventory[x]);
                 Debug.Log("Now Holding a " + inventory[x].objName + " Object.");

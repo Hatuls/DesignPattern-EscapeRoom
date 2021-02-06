@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     Camera myCamera;
     RaycastHit _hitInfo;
     Ray _ray;
-    ObjectAbst useObject;
+    ObjectSO useObject;
 
 
 
@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
         _instance = this;
         myCamera = Camera.main;
     }
-    public void SetUseObject(ObjectAbst useSelectedObject)
+    public void SetUseObject(ObjectSO useSelectedObject)
     {
 
         useObject = useSelectedObject;
@@ -41,23 +41,23 @@ public class InputManager : MonoBehaviour
         }
 
 
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //    Inventory._instance.CheckIfObjectIsSelectable(0);
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //    Inventory._instance.CheckIfObjectIsSelectable(1);
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //    Inventory._instance.CheckIfObjectIsSelectable(2);
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //    Inventory._instance.CheckIfObjectIsSelectable(3);
-        //if (Input.GetKeyDown(KeyCode.Alpha5))
-        //    Inventory._instance.CheckIfObjectIsSelectable(4);
-        //if (Input.GetKeyDown(KeyCode.Alpha6))
-        //    Inventory._instance.CheckIfObjectIsSelectable(5);
-        //if (Input.GetKeyDown(KeyCode.Alpha7))
-        //    Inventory._instance.CheckIfObjectIsSelectable(6);
-        //if (Input.GetKeyDown(KeyCode.Alpha8))
-        //    Inventory._instance.CheckIfObjectIsSelectable(7);
-        //if (Input.GetKeyDown(KeyCode.Alpha9))
-        //    Inventory._instance.CheckIfObjectIsSelectable(8);
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(4);
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(5);
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(6);
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(7);
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            Inventory.GetInstance.CheckIfObjectIsSelectable(8);
     }
 }

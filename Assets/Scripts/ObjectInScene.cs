@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class ObjectInScene : MonoBehaviour
 {
- [SerializeField] ObjectAbst thisObject;
+    [SerializeField] ObjectSO thisObject;
+    public Quest quest;
 
-    public ObjectAbst GetObjectAbst { get { return thisObject; } }
-    private void Start()
-    {
-        thisObject.gameObject = this.gameObject;
+    public ObjectSO GetObjectAbst { get { return thisObject; } }
+    private void Awake() {
+        if (quest.questSO != null) {
+            quest.questSO.handlingScript = quest;
+            thisObject.interactQuest = quest;
+        }
     }
 
 
-    public void GotClicked(ObjectAbst selectedObject) {
+    public void GotClicked(ObjectSO selectedObject) {
 
-        thisObject.WorldInteraction(selectedObject);
-    
+        thisObject.WorldInteraction(gameObject, selectedObject);
+
     }
 }

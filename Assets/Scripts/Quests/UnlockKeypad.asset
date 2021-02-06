@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
   m_Name: UnlockKeypad
   m_EditorClassIdentifier: Assembly-CSharp::QuestAbstSO
-  handlingScript:
-    quest: {fileID: 11400000}
-    objectsToSwap:
-    - {fileID: 0}
-    - {fileID: 0}
-  object1ToComplete: {fileID: 11400000, guid: 04b6d7f705556b14dbac17281c44f84f, type: 2}
+  object1ToComplete: {fileID: 0}
   object2ToComplete: {fileID: 0}
   questsNeeded:
   - {fileID: 11400000, guid: 4885be42ba1c4e445a3271000ce79a33, type: 2}

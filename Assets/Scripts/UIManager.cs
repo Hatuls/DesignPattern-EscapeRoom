@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button LeftArrows, RightArrows;
     [SerializeField] Sprite defaultSprite;
     ButtonSlot[] inventoryButtonsSlots;
-    ObjectAbst[] inventory;
+    ObjectSO[] inventory;
     public static UIManager GetInstance => _instance;
     private void Awake()
     {
