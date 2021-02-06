@@ -71,10 +71,7 @@ public class UIManager : MonoBehaviour
             InputManager._instance.SetSelectedObject(item);
         else
         inventoryScript.ItemInventoryInteract(item);
-
-
-        ResetButtons();
-        return true;
+        return item.inventoryInteraction != InventoryInteraction.ActivateQuest;
 
     }
 
