@@ -16,3 +16,4 @@ MonoBehaviour:
   isSelectAble: 1
   canInteract: 1
   isPickUp: 1
+  objectImage: {fileID: 21300000, guid: f2081c8910501c4449279b16d783e505, type: 3}

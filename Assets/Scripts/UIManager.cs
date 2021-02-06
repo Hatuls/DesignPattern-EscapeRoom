@@ -6,11 +6,11 @@ public class UIManager : MonoBehaviour
 {
     static UIManager _instance;
     [SerializeField] GameObject[] inventoryPF;
-  
+    Inventory inventoryScript;
     [SerializeField] Button LeftArrows, RightArrows;
     [SerializeField] Sprite defaultSprite;
     ButtonSlot[] inventoryButtonsSlots;
-    ObjectAbst[] inventory;
+    ObjectAbst[] InventroyArray;
     public static UIManager GetInstance => _instance;
     private void Awake()
     {
@@ -19,7 +19,8 @@ public class UIManager : MonoBehaviour
     }
     private void Init()
     {
-        inventory = Inventory.GetInstance.GetInventory;
+        inventoryScript = Inventory.GetInstance;
+        InventroyArray = inventoryScript.GetInventory;
        
 
         if (inventoryPF == null || inventoryPF.Length == 0)
@@ -51,12 +52,12 @@ public class UIManager : MonoBehaviour
 
     void AssignImagesToButtons()
     {
-        for (int i = 0; i < inventory.Length; i++)
+        for (int i = 0; i < InventroyArray.Length; i++)
         {
-            if (inventory[i] == null || inventory[i].GetObjectSprite() == null)
-                inventoryButtonsSlots[i].AssignImage(defaultSprite);
+            if (InventroyArray[i] == null || InventroyArray[i].GetObjectSprite() == null)
+                inventoryButtonsSlots[i].AssignAlpha(true);
             else
-                inventoryButtonsSlots[i].AssignImage(inventory[i].GetObjectSprite());
+                inventoryButtonsSlots[i].AssignImage(InventroyArray[i].GetObjectSprite());
         }
     }
 
@@ -67,13 +68,17 @@ public class UIManager : MonoBehaviour
     }
 
     public bool GetObjectFromItem(int buttonID) {
-        if (buttonID < 0 || buttonID >= inventory.Length || inventory[buttonID] == null || !inventory[buttonID].canInteract)
+        if (buttonID < 0 || buttonID >= InventroyArray.Length || InventroyArray[buttonID] == null || !InventroyArray[buttonID].canInteract)
             return false;
 
-        Debug.Log("Now Selecting : " +inventory[buttonID].objName);
-
-        InputManager._instance.SetUseObject(inventory[buttonID]);
+        if (inventoryScript.CheckIfObjectIsSelectable(buttonID))
         return true;
+
+        
+       
+            ResetButtons();
+            return false;
+        
     }
 
 
