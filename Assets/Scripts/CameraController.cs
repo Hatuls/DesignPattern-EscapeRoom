@@ -4,6 +4,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float transitionSpeed;
     [SerializeField] private View startView;
+    public event System.Action StartedTransition;
     public event System.Action<View> ViewChanged;
     private View currentView;
     private static bool inTransition = false;
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
             return;
         if (currentView != newView) {
             inTransition = true;
+            StartedTransition();
             LeanTween.cancel(gameObject);
             LeanTween.move(gameObject, newView.transform.position, transitionSpeed);
             LeanTween.rotateY(gameObject, newView.transform.rotation.eulerAngles.y, transitionSpeed).setOnComplete(() => { SetTransitionEnd(newView); });

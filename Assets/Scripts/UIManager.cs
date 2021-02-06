@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         InventroyArray = inventoryScript.GetInventory;
         cmra = CameraController._instance;
         cmra.ViewChanged += SetActiveView;
+        cmra.StartedTransition += StartTransition;
 
         if (inventoryPF == null || inventoryPF.Length == 0 || cmra == null)
             return;
@@ -70,7 +71,12 @@ public class UIManager : MonoBehaviour
                 inventoryButtonsSlots[i].AssignImage(InventroyArray[i].GetObjectSprite());
         }
     }
-
+    void StartTransition() {
+        if (!inTransition) {
+            inTransition = true;
+            HideEveryThingExcept(null);
+        }
+    }
 
     public void ResetButtons() {
         for (int i = 0; i < inventoryButtonsSlots.Length; i++)
@@ -115,7 +121,7 @@ public class UIManager : MonoBehaviour
         if(lastViewButtonSelected != null)
         HighLightArrow(lastViewButtonSelected, false);
 
-        SetVisabilityViewAllButtons(true);
+        SetButtonsVisabilityByView(view);
 
         currentView = view;
 
@@ -183,20 +189,20 @@ public class UIManager : MonoBehaviour
         lastViewButtonSelected = HighlightMeButton;
     }
 
-    void SetVisabilityViewAllButtons(bool ToActivate) {
+    void SetButtonsVisabilityByView(View view) {
 
 
-        if (ForwardArrow.gameObject.activeSelf != ToActivate)
-        ForwardArrow.gameObject.SetActive(ToActivate);
+        if (ForwardArrow.gameObject.activeSelf != (view.ForwardView != null))
+        ForwardArrow.gameObject.SetActive(view.ForwardView != null);
 
-        if (BackwardArrow.gameObject.activeSelf != ToActivate)
-            BackwardArrow.gameObject.SetActive(ToActivate);
+        if (BackwardArrow.gameObject.activeSelf != (view.BackwardsView != null))
+            BackwardArrow.gameObject.SetActive((view.BackwardsView != null));
 
-        if (RightArrow.gameObject.activeSelf != ToActivate)
-            RightArrow.gameObject.SetActive(ToActivate);
+        if (RightArrow.gameObject.activeSelf != (view.RightView != null))
+            RightArrow.gameObject.SetActive((view.RightView != null));
 
-        if (LeftArrow.gameObject.activeSelf != ToActivate)
-            LeftArrow.gameObject.SetActive(ToActivate);
+        if (LeftArrow.gameObject.activeSelf != (view.LeftView != null))
+            LeftArrow.gameObject.SetActive((view.LeftView != null));
 
 
 
