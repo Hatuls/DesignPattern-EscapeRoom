@@ -758,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &977586584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -799,7 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff9e4f16c2849545b560f9b4dd9446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 1845027410}
+  activeView: {fileID: 1282233961}
+  targetView: {fileID: 1845027410}
 --- !u!1 &1282233959
 GameObject:
   m_ObjectHideFlags: 0
