@@ -73,11 +73,10 @@ public class UIManager : MonoBehaviour
         inventoryScript.ItemInventoryInteract(item);
 
 
-        ResetButtons();
         return true;
 
     }
 
-
+    
 
 }

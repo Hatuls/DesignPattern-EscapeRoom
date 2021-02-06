@@ -64,8 +64,10 @@ public class ButtonSlot : MonoBehaviour
         }
         else
         {
+
             ResetButton();
                 isHighlighted = false;
+            InputManager._instance.SetSelectedObject(null);
         }
 
     }
