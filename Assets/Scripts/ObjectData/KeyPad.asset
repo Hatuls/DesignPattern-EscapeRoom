@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c4f1257f59ec349a74707e074fe8ae, type: 3}
-  m_Name: Keypad
+  m_Name: KeyPad
   m_EditorClassIdentifier: 
   objName: Keypad
-  isSelectAble: 0
-  canInteract: 1
   isPickUp: 0
+  canInteract: 1
+  questToggleable: 0
+  inventoryInteraction: 0
   objectImage: {fileID: 0}
