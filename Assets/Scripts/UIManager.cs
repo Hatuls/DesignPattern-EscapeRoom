@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -14,7 +15,8 @@ public class UIManager : MonoBehaviour
     ButtonSlot[] inventoryButtonsSlots;
     ObjectSO[] InventroyArray;
     [SerializeField] Image inspectPanelImage;
-    bool isInspecting = false;
+    Sprite spriteToInspect;
+   
     public static UIManager GetInstance => _instance;
     private void Awake() {
         _instance = this;
@@ -26,7 +28,7 @@ public class UIManager : MonoBehaviour
         cmra = CameraController._instance;
         cmra.ViewChanged += SetActiveView;
         cmra.StartedTransition += StartTransition;
-
+      
         if (inventoryPF == null || inventoryPF.Length == 0 || cmra == null)
             return;
 
@@ -50,22 +52,34 @@ public class UIManager : MonoBehaviour
     }
 
 
-
+    void CloseBlackPanel()
+    {
+        if (inspectPanelImage.gameObject.activeSelf)
+        {
+            inspectPanelImage.gameObject.SetActive(false);
+            spriteToInspect = null;
+        }
+    }
     public void InspectItem(Sprite toInspect) {
         if (!toInspect)
             return;
-        isInspecting = true;
-        inspectPanelImage.gameObject.SetActive(isInspecting);
+        if (spriteToInspect == toInspect)
+         {
+            CloseBlackPanel();
+            return;
+         }
+        spriteToInspect = toInspect;
+        inspectPanelImage.gameObject.SetActive(true);
         inspectPanelImage.sprite = toInspect;
+       
     }
 
     private void Update()
     {
-        if (isInspecting && Input.anyKeyDown)
-        {
-            ResetButtons();
-            isInspecting = false;
-        }
+        if (spriteToInspect && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+             ResetButtons();
+        
+       
     }
 
     #region Ui Inventory
@@ -89,27 +103,37 @@ public class UIManager : MonoBehaviour
             HideEveryThingExcept(null);
         }
     }
+   
 
+    public void ResetButtonHighLight() {
+
+        InputManager._instance.SetSelectedObject(null);
+    
+        ResetButtons();
+    }
     public void ResetButtons() {
         for (int i = 0; i < inventoryButtonsSlots.Length; i++)
             inventoryButtonsSlots[i].ResetButton();
 
-        if (inspectPanelImage.IsActive())
-           inspectPanelImage.gameObject.SetActive(false);
-        
+        CloseBlackPanel();
     }
 
     public bool GetObjectFromInventory(int buttonID) {
         if (buttonID < 0 || buttonID >= InventroyArray.Length || InventroyArray[buttonID] == null)
             return false;
-        
+
         ObjectSO item = InventroyArray[buttonID];
         if (inventoryScript.CheckIfItemtIsSelectable(item))
+        {
             InputManager._instance.SetSelectedObject(item);
-        else
+            CloseBlackPanel();
+        }
+        else {
+            if (spriteToInspect  || item.inventoryInteraction != InventoryInteraction.Inspect || spriteToInspect != item.GetInspectImage)
             inventoryScript.ItemInventoryInteract(item);
+        }
        
-ResetButtons(buttonID);
+            ResetButtons(buttonID);
         return item.inventoryInteraction != InventoryInteraction.ActivateQuest;
 
     }
@@ -121,6 +145,8 @@ ResetButtons(buttonID);
                 continue;
             inventoryButtonsSlots[i].ResetButton();
         }
+
+
     }
     #endregion
 

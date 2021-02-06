@@ -17,7 +17,7 @@ public class ObjectSO : ScriptableObject
     public InventoryInteraction inventoryInteraction;
     [SerializeField] Sprite objectImage = null;
     [SerializeField] Sprite inspectImage;
-   
+    public Sprite GetInspectImage => inspectImage;
 
     public void ToPickUp(GameObject gameObject) {
         Destroy(gameObject);

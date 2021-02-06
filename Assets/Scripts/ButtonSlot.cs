@@ -66,8 +66,7 @@ public class ButtonSlot : MonoBehaviour
         {
 
             ResetButton();
-            
-            InputManager._instance.SetSelectedObject(null);
+            UIManager.GetInstance.ResetButtonHighLight();
         }
 
     }
