@@ -46,6 +46,7 @@ public class QuestHandler
     public QuestAbstSO quest;
     [Header("Swaps the objects state on quest finish")]
     public GameObject[] objectsToSwap;
+    public Transform transform;
 
     public void SwapObjects() {
         foreach (GameObject obj in objectsToSwap) {
@@ -60,6 +61,7 @@ public class QuestHandler
             switch (value) {
                 case true:
                     quest.Finish();
+                    CameraController._instance.SetAnchor(transform);
                     isCompleted = true;
                     break;
                 case false:
