@@ -72,8 +72,8 @@ public class UIManager : MonoBehaviour
         else
         inventoryScript.ItemInventoryInteract(item);
 
+        return item.inventoryInteraction != InventoryInteraction.ActivateQuest;
 
-        return true;
 
     }
 
