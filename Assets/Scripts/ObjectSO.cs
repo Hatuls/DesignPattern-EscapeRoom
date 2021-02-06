@@ -17,7 +17,7 @@ public class ObjectSO : ScriptableObject
     public InventoryInteraction inventoryInteraction;
     [SerializeField] Sprite objectImage = null;
     public void ToPickUp(GameObject gameObject) {
-        gameObject.SetActive(!gameObject.activeSelf);
+        Destroy(gameObject);
         Inventory.GetInstance.AddToInventory(this);
     }
 
