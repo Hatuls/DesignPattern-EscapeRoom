@@ -9,11 +9,11 @@ public class ButtonSlot : MonoBehaviour
     Image img;
     ColorBlock clrblk;
     Color[] colorParams;
-
+    bool isHighlighted = false;
     public void Init()
     {
         btn = GetComponent<Button>();
-        img = GetComponent<Image>();
+        img = transform.GetChild(0).GetComponent<Image>();
         clrblk = btn.colors;
         colorParams = new Color[4];
 
@@ -22,7 +22,7 @@ public class ButtonSlot : MonoBehaviour
         colorParams[1] = clrblk.pressedColor;
         colorParams[2] = clrblk.selectedColor;
         colorParams[3] = clrblk.highlightedColor;
-
+        AssignAlpha(true);
     }
 
     public void ResetButton()
@@ -38,17 +38,30 @@ public class ButtonSlot : MonoBehaviour
 
         if (clrblk.highlightedColor != colorParams[3])
             clrblk.highlightedColor = colorParams[3];
-    }
-    public void AssignImage(Sprite sprite) {
 
+        btn.colors = clrblk; 
+    }
+
+    public void AssignAlpha(bool doAlpha) => img.color = doAlpha ? Color.clear : Color.white;
+
+    public void AssignImage(Sprite sprite)
+    {
+        AssignAlpha(false);
         img.sprite = sprite;
     }
-
     public void ButtonGotClicked(int buttonID) {
 
-        clrblk.normalColor = UIManager.GetInstance.GetObjectFromItem(buttonID) ? colorParams[1] : colorParams[0];
-       
-        btn.colors = clrblk;
+
+
+        if (isHighlighted)
+        {
+            clrblk.normalColor = UIManager.GetInstance.GetObjectFromItem(buttonID) ? colorParams[1] : colorParams[0];
+            btn.colors = clrblk;
+        }
+        else
+            ResetButton();
+        
+        isHighlighted = !isHighlighted;
     }
 
 }
