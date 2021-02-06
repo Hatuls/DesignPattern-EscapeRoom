@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5cd54ef9f502843b18f45a2d64a26c, type: 3}
+  m_Name: AirDuct
+  m_EditorClassIdentifier: 
+  object1ToComplete: {fileID: 11400000, guid: 8107329c2057dc240bbe50d450f85728, type: 2}
+  object2ToComplete: {fileID: 11400000, guid: 6bc8cce8920afd64f8f783e7afb68830, type: 2}
+  questsNeeded: []
+  finishedQuestMessage: you cracked open the air duct gate!
+  unfinishedQuestMessage: 
